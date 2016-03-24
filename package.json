@@ -1,0 +1,47 @@
+{
+  "name": "gulp-assets-plus",
+  "version": "0.9.0",
+  "description": "md5/sha256 the static files(eg. javascript, style, image files) and change the hash strings in the quoted html, forked from gulp-md5-assets.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint lib/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sivan/gulp-assets-plus.git"
+  },
+  "keywords": [
+    "gulp",
+    "gulp-md5",
+    "gulp-assets",
+    "gulpplugin"
+  ],
+  "homepage": "https://github.com/sivan/gulp-assets-plus",
+  "author": {
+    "name": "Sivan"
+  },
+  "email": "sun.sivan@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sivan/gulp-assets-plus/issues"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "extend": "^3.0.0",
+    "glob": "^7.0.3",
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.2.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "ignore": "node_modules"
+  }
+}
