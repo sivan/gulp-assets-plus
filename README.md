@@ -41,9 +41,9 @@ gulp.task('img' ,function() {
   return gulp.src(imgSrc)
     .pipe(imagemin())
     .pipe(hashAseets(quoteSrc, {
-			size: 6,
-			algorithm: 'sha256'
-		}))
+      size: 6,
+      algorithm: 'sha256'
+    }))
     .pipe(gulp.dest(imgDst));
 });
 ```
