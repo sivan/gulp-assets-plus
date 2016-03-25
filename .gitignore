@@ -1,11 +1,13 @@
+# Sample .gitignore from https://github.com/sivan/dotfiles
+
 # Editor generate files
-.idea/
+.idea
 .sublime-*
 .settings
 
 # Dev dependencies and cache files
 .sass-cache
-node_modules/
+node_modules
 
 # Folder view configuration files
 .DS_Store

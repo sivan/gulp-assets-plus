@@ -1,6 +1,6 @@
 {
   "name": "gulp-assets-plus",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "md5/sha256 the static files(eg. javascript, style, image files) and change the hash strings in the quoted html, forked from gulp-md5-assets.",
   "main": "index.js",
   "scripts": {

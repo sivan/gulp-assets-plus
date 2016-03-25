@@ -120,9 +120,9 @@ Optionnal: you can pass a whitelist array to filter the files you don't want to 
 
 Type: `String` | `Array`
 
-Default: ['debug']
+Default: null
 
-Optionnal: you can pass a dev string array to filter the files with this hash. For example: if your quote a css file like `<link rel="stylesheet" href="./css/main.css?debug" />`, it will ignore this quote. It's useful when you change files frequently in the development time, but don't forget to remove dev-mode string before you publish your code.
+Optionnal: you can pass a dev string array to filter the files with this hash. For example: use `['debug']` or `'debug'` will ignore these files when you quote them like `<link rel="stylesheet" href="./css/main.css?debug" />`. It's useful when you change some file frequently during development, but don't forget to remove that string before publish.
 
 ##### opt.algorithm
 

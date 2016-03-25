@@ -24,7 +24,7 @@ module.exports = function hashAseets(ifile, opt) {
     size: 7, // limit the size of the hash that is appended
     assetsPath: null, // assets relative path to split
     whitelist: null, // keywords string|array that shouldn't add hash
-    devMode: ['debug'], // keywords string|array that ignore
+    devMode: null, // keywords string|array that ignore
     algorithm: 'md5', // md5 | sha256
   };
   const options = extend({}, defaults, opt);
@@ -40,7 +40,6 @@ module.exports = function hashAseets(ifile, opt) {
     let isSubFolder = false;
     let filenameReg;
 
-    // Detect sub folder
     if (file.base.split(path.sep).filter(Boolean).length >
         assetsDir.split(path.sep).filter(Boolean).length) isSubFolder = true;
 
