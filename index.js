@@ -1,2 +1,6 @@
-require('babel-core/register');
-module.exports = require('./lib/main.js');
+'use strict';
+require('babel-register')({
+  ignore: false,
+  extensions: ['.es6']
+});
+module.exports = require('./lib/main');
