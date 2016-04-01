@@ -1,12 +1,20 @@
 # gulp-assets-plus
 
-md5/sha256 the static files(eg. javascript, style, image files) and change the hash strings in the quoted html. Forked from [gulp-md5-assets](https://github.com/stipsan/gulp-md5-assets).
+md5/sha256 the static files(eg. javascript, style, image files) and change the hash strings in the quoted file. Forked from [gulp-md5-assets](https://github.com/stipsan/gulp-md5-assets).
 
 ``` html
-Sample from a index.html file before transformation:
 <link rel="stylesheet" href="./css/main.css" />
-gulp-assets-plus
+=>
 <link rel="stylesheet" href="./css/main.css?56318d54ed" />
+```
+``` css
+.gf {
+  background-image: url(./img/goldenfinger.jpg);
+}
+=>
+.gf {
+  background-image: url(./img/goldenfinger.jpg?56318d54ed);
+}
 ```
 
 ## Usage
