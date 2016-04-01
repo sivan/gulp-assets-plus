@@ -46,7 +46,7 @@ module.exports = function hashAseets(ifile, opt) {
     if (isSubFolder) {
       filenameReg = new RegExp(`()(${subNamepath}${filename}[\\?\\w+]*)`, 'g');
     } else {
-      filenameReg = new RegExp(`(=['"]?\\.*\\/?)(${subNamepath}${filename}[\\?\\w+]*)`, 'g');
+      filenameReg = new RegExp(`(['"]?\\.*\\/?)(${subNamepath}${filename}[\\?\\w+]*)`, 'g');
     }
 
     const md5Filename = `${filename}?${hashStr}`;
