@@ -30,7 +30,7 @@ Then, add the code below to your `gulpfile.js`.
 Example 1: Md5 all css files in the src folder and change these css names in the quoted html.
 
 ``` js
-var hashAseets = require("gulp-mi-assets");
+var hashAseets = require("gulp-assets-plus");
 
 gulp.src("./src/*.css")
   .pipe(hashAseets('./output/*.html'))
@@ -124,13 +124,13 @@ Default: null
 
 Optionnal: you can pass a whitelist array to filter the files you don't want to add the hash. For example: use `['base', 'jquery']` will ignore all the files which contains 'base' or 'jquery' in the filename, it's useful when you don't want to add hash to some file.
 
-##### opt.devMode
+##### opt.ignore
 
 Type: `String` | `Array`
 
 Default: null
 
-Optionnal: you can pass a dev string array to filter the files with this hash. For example: use `['debug']` or `'debug'` will ignore these files when you quote them like `<link rel="stylesheet" href="./css/main.css?debug" />`. It's useful when you change some file frequently during development, but don't forget to remove that string before publish.
+Optionnal: you can pass an ignore string/array to filter the files with this hash. For example: use `['debug']` or `'debug'` will ignore these files when you quote them like `<link rel="stylesheet" href="./css/main.css?debug" />`. It's useful when you change some file frequently during development, but don't forget to remove that string before publish.
 
 ##### opt.algorithm
 

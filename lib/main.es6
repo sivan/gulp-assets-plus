@@ -24,7 +24,7 @@ module.exports = function hashAseets(ifile, opt) {
     size: 7, // limit the size of the hash that is appended
     assetsPath: null, // assets relative path to split
     whitelist: null, // keywords string|array that shouldn't add hash
-    devMode: null, // keywords string|array that ignore
+    ignore: null, // keywords string|array that ignore
     algorithm: 'md5', // md5 | sha256
   };
   const options = extend({}, defaults, opt);
@@ -86,10 +86,10 @@ module.exports = function hashAseets(ifile, opt) {
       files.forEach((ilist) => {
         const _file = fs.readFileSync(ilist, 'utf8');
 
-        // Check if current hash string is in the dev mode list
-        if (isListedStr(filenameReg.exec(_file)[2], options.devMode)) {
+        // Check if current hash string is in the ignore list
+        if (isListedStr(filenameReg.exec(_file)[2], options.ignore)) {
           gutil.log(
-            gutil.colors.yellow('Dev mode:'),
+            gutil.colors.yellow('Ignore:'),
             gutil.colors.magenta(ilist),
             '=>',
             gutil.colors.magenta(filename)
