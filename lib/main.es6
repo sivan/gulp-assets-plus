@@ -22,7 +22,7 @@ function getHashStr(file, len, algorithm) {
 module.exports = function hashAseets(ifile, opt) {
   const defaults = {
     size: 7, // limit the size of the hash that is appended
-    assetsPath: null, // assets relative path to split
+    assetsPath: '', // assets relative path to split
     whitelist: null, // keywords string|array that shouldn't add hash
     ignore: null, // keywords string|array that ignore
     algorithm: 'md5', // md5 | sha256
@@ -75,7 +75,7 @@ module.exports = function hashAseets(ifile, opt) {
     if (!ifile || !file.contents) return cb();
 
     // Check if filename is in the whitelist
-    if (isListedStr(filename, options.whitelist)) {
+    if (options.whitelist && isListedStr(filename, options.whitelist)) {
       gutil.log(gutil.colors.yellow('Whitelist:'), gutil.colors.magenta(filename));
       return cb();
     }
@@ -85,9 +85,12 @@ module.exports = function hashAseets(ifile, opt) {
 
       files.forEach((ilist) => {
         const _file = fs.readFileSync(ilist, 'utf8');
+        const _nameResult = filenameReg.exec(_file);
+        const isIncludeFile = filenameReg.test(_file);
+        const isIncludeMd5File = md5FilenameReg.test(_file);
 
         // Check if current hash string is in the ignore list
-        if (isListedStr(filenameReg.exec(_file)[2], options.ignore)) {
+        if (options.ignore && _nameResult && isListedStr(_nameResult[2], options.ignore)) {
           gutil.log(
             gutil.colors.yellow('Ignore:'),
             gutil.colors.magenta(ilist),
@@ -97,7 +100,7 @@ module.exports = function hashAseets(ifile, opt) {
           return;
         }
 
-        if (filenameReg.test(_file) && !md5FilenameReg.test(_file)) {
+        if (isIncludeFile && !isIncludeMd5File) {
           gutil.log(
             gutil.colors.magenta(subNamepath + filename),
             '=>',
