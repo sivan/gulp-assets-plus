@@ -30,10 +30,10 @@ Then, add the code below to your `gulpfile.js`.
 Example 1: Md5 all css files in the src folder and change these css names in the quoted html.
 
 ``` js
-var hashAseets = require("gulp-assets-plus");
+var hashAssets = require("gulp-assets-plus");
 
 gulp.src("./src/*.css")
-  .pipe(hashAseets('./output/*.html'))
+  .pipe(hashAssets('./output/*.html'))
   .pipe(gulp.dest("./dist")
 );
 ```
@@ -48,7 +48,7 @@ gulp.task('img' ,function() {
 
   return gulp.src(imgSrc)
     .pipe(imagemin())
-    .pipe(hashAseets(quoteSrc, {
+    .pipe(hashAssets(quoteSrc, {
       size: 6,
       algorithm: 'sha256'
     }))
@@ -62,7 +62,7 @@ the directory of the md5ed files in the imgDst folder is the same as that of ori
 
 ## API
 
-### hashAseets(file, opt)
+### hashAssets(file, opt)
 
 #### file
 
@@ -76,7 +76,7 @@ Example:
 
 ``` javascript
 gulp.src('static/js/*')
-  .pipe(hashAseets('./output/html/*.html'), {size: 6})
+  .pipe(hashAssets('./output/html/*.html'), {size: 6})
   .pipe(gulp.dest('./output')
 );
 ```
@@ -108,7 +108,7 @@ Example:
 ```
 ``` javascript
 gulp.src('dist/css/**/*.css')
-  .pipe(hashAseets('./output/html/*.html'), {
+  .pipe(hashAssets('./output/html/*.html'), {
     assetsPath: 'dist/'
   })
   .pipe(gulp.dest('./output')
