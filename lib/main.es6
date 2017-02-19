@@ -25,6 +25,7 @@ module.exports = function hashAseets(ifile, opt) {
     assetsPath: '', // assets relative path to split
     whitelist: null, // keywords string|array that shouldn't add hash
     ignore: null, // keywords string|array that ignore
+    quotedPath: '',
     algorithm: 'md5', // md5 | sha256
   };
   const options = extend({}, defaults, opt);
@@ -35,6 +36,7 @@ module.exports = function hashAseets(ifile, opt) {
     const filename = path.basename(file.path);
     const assetsDir = path.resolve(__dirname.slice(0, __dirname.lastIndexOf('/node_modules')),
       options.assetsPath);
+    const quotedPath = options.quotedPath;
     const subNamepath = path.relative(assetsDir, file.path)
       .replace(new RegExp(filename), '').split(path.sep).join('/');
     let isSubFolder = false;
@@ -44,15 +46,15 @@ module.exports = function hashAseets(ifile, opt) {
         assetsDir.split(path.sep).filter(Boolean).length) isSubFolder = true;
 
     if (isSubFolder) {
-      filenameReg = new RegExp(`()(${subNamepath}${filename}[\\?\\w+]*)`, 'g');
+      filenameReg = new RegExp(`()(${quotedPath}${subNamepath}${filename}[\\?\\w+]*)`, 'g');
     } else {
-      filenameReg = new RegExp(`(['"]?\\.*\\/?)(${subNamepath}${filename}[\\?\\w+]*)`, 'g');
+      filenameReg = new RegExp(`(['"]?\\.*\\/?)(${quotedPath}${subNamepath}${filename}[\\?\\w+]*)`, 'g');
     }
 
     const md5Filename = `${filename}?${hashStr}`;
-    const md5FilenameReg = new RegExp(`${subNamepath}${filename}\\?${hashStr}`, 'g');
+    const md5FilenameReg = new RegExp(`${quotedPath}${subNamepath}${filename}\\?${hashStr}`, 'g');
 
-    // Check if filename contains keywords in the list
+   // Check if filename contains keywords in the list
     function isListedStr(str, list) {
       let isListed = false;
 
@@ -108,7 +110,7 @@ module.exports = function hashAseets(ifile, opt) {
             '=>',
             gutil.colors.green(hashStr)
           );
-          const result = _file.replace(filenameReg, `$1${subNamepath}${md5Filename}`);
+          const result = _file.replace(filenameReg, `$1${quotedPath}${subNamepath}${md5Filename}`);
           fs.writeFileSync(ilist, result, 'utf8');
         }
       });
