@@ -86,6 +86,8 @@ module.exports = function hashAseets(ifile, opt) {
       files.forEach((ilist) => {
         const _file = fs.readFileSync(ilist, 'utf8');
         const _nameResult = filenameReg.exec(_file);
+        filenameReg.lastIndex = 0; 
+        md5FilenameReg.lastIndex = 0; 
         const isIncludeFile = filenameReg.test(_file);
         const isIncludeMd5File = md5FilenameReg.test(_file);
 
