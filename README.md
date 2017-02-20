@@ -115,6 +115,27 @@ gulp.src('dist/css/**/*.css')
 );
 ```
 
+##### opt.quotedPath
+
+Type: `String`
+
+Default: null
+
+Optionnal: you can declare the quotes folder manually when quoted source is diffrent from actual Path (rewritten).
+
+Example:
+
+``` html
+<link rel="stylesheet" href="http://127.0.0.1/rewrite_to_css/main.css?56318d54ed" />
+```
+``` javascript
+gulp.src('css/**/*.css')
+  .pipe(hashAssets('./output/html/*.html'), {
+    quotedPath: 'rewrite_to_css/'
+  })
+);
+```
+
 
 ##### opt.whitelist
 
